@@ -3,13 +3,24 @@
 <head>
     <title>Due Diligence Request Form</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 800px;
+        }
         .form-group {
             display: flex;
             align-items: center;
             margin-bottom: 15px;
         }
         .form-group label {
-            width: 500px;
+            width: 400px; /* Adjusted width for the questions */
             margin-right: 10px;
         }
         .form-group input, .form-group select, .form-group textarea {
@@ -23,11 +34,25 @@
             resize: none;
             height: 30px;
         }
+        .form-group .other-input {
+            display: none;
+        }
     </style>
+    <script>
+        function toggleOtherInput() {
+            var engagementType = document.getElementById("engagementType");
+            var otherInput = document.getElementById("otherInput");
+            if (engagementType.value === "other") {
+                otherInput.style.display = "flex";
+            } else {
+                otherInput.style.display = "none";
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Due Diligence Request Form</h1>
     <form id="donorForm" action="https://your-backend-service-url" method="post">
+        <h1>Due Diligence Request Form</h1>
         <div class="form-group">
             <label for="fullName">Full Legal Name of Potential Donor/Partner:</label>
             <input type="text" id="fullName" name="fullName" required>
@@ -91,16 +116,20 @@
 
         <div class="form-group">
             <label for="engagementType">Type of engagement:</label>
-             <select id="engagementType" name="engagementType" required>
+            <select id="engagementType" name="engagementType" onchange="toggleOtherInput()" required>
                 <option value="financial">Financial Contribution</option>
                 <option value="in-kind">In Kind Contribution</option>
                 <option value="partnership">Partnership Agreement</option>
                 <option value="mou">MOU</option>
                 <option value="additional">Additional Contribution</option>
                 <option value="technical">Technical Assistance</option>
-                 <option value="other">Other (please specify)</option>
+                <option value="other">Other (please specify)</option>
             </select>
-            <input type="text" id="engagementType" name="engagementType" required>
+        </div>
+
+        <div class="form-group other-input" id="otherInput">
+            <label for="otherEngagement">Please specify:</label>
+            <input type="text" id="otherEngagement" name="otherEngagement">
         </div>
 
         <div class="form-group">
