@@ -34,7 +34,7 @@
         </div>
 
         <div class="form-group">
-            <label for="donorType">Type of Donor:</label>
+            <label for="donorType">Type of Donor (please choose):</label>
             <select id="donorType" name="donorType">
                 <option value="company">Company</option>
                 <option value="foundation">Foundation</option>
@@ -91,7 +91,21 @@
 
         <div class="form-group">
             <label for="engagementType">Type of engagement:</label>
+             <select id="engagementType" name="engagementType" required>
+                <option value="financial">Financial Contribution</option>
+                <option value="in-kind">In Kind Contribution</option>
+                <option value="partnership">Partnership Agreement</option>
+                <option value="mou">MOU</option>
+                <option value="additional">Additional Contribution</option>
+                <option value="technical">Technical Assistance</option>
+                 <option value="other">Other (please specify)</option>
+            </select>
             <input type="text" id="engagementType" name="engagementType" required>
+        </div>
+
+              <div class="form-group other-input" id="otherInput">
+            <label for="otherEngagement">Please specify:</label>
+            <input type="text" id="otherEngagement" name="otherEngagement">
         </div>
 
         <div class="form-group">
